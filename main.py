@@ -9,9 +9,10 @@ def import_midi():
             print("MIDI file loaded successfully!")
             return file_path
         else:
-            print('Error Loading File')
+            print('Error Loading File')()
 
-    mid = mido.MidiFile(initFile())
+    filePath = initFile()
+    mid = mido.MidiFile(filePath)
 
     # Find Key Sig
     key_signature = None
@@ -63,10 +64,42 @@ def import_midi():
     else:
         print("No time signature found in the MIDI file")
 
+    # MIDI Name
+    
+    MIDIName = filePath
+    # MIDI Name Title
+    MIDINameTitle = tk.Label(frame,
+    text = MIDIName,
+    font = ("Arial", 12)
+    )
+    MIDINameTitle.place(
+    x = 0,
+    y = 70
+    )
+    # BPM Input Title
+    BPMTitle = tk.Label(frame,
+    text = "BPM: ",
+    font = ("Arial", 12)
+    )
+    BPMTitle.place(
+    x = 0,
+    y = 100
+    )
+
+    # BPM Input
+    BPMInput = tk.Text(frame,
+    height = 1,
+    width = 20)
+    BPMInput.insert("1.0", str(bpm))  # add this line to insert default text
+    BPMInput.place(
+    x = 0,
+    y = 130
+    )
+
 # Top level window
 frame = tk.Tk()
 frame.title("MIDI Atributes Changer")
-frame.geometry('350x465')
+frame.geometry('350x200')
 
 # Title
 mainTitle = tk.Label(frame, 
@@ -86,26 +119,7 @@ bg = ("#e1eaf2"),
 command = import_midi)
 importButton.place(
     x=0,
-    y=100
-)
-
-# BPM Input Title
-bgColourTitle = tk.Label(frame,
-text = "BPM: ",
-font = ("Arial", 12)
-)
-bgColourTitle.place(
-    x = 0,
-    y = 30
-)
-
-# BPM Input
-BPMInput = tk.Text(frame,
-    height = 1,
-    width = 20)
-BPMInput.place(
-    x = 0,
-    y = 60
+    y=30
 )
 
 frame.mainloop()
