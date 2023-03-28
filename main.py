@@ -65,7 +65,6 @@ def import_midi():
         print("No time signature found in the MIDI file")
 
     # MIDI Name
-    
     MIDIName = filePath
     # MIDI Name Title
     MIDINameTitle = tk.Label(frame,
@@ -76,31 +75,14 @@ def import_midi():
     x = 0,
     y = 70
     )
-    # BPM Input Title
-    BPMTitle = tk.Label(frame,
-    text = "BPM: ",
-    font = ("Arial", 12)
-    )
-    BPMTitle.place(
-    x = 0,
-    y = 100
-    )
 
-    # BPM Input
-    BPMInput = tk.Text(frame,
-    height = 1,
-    width = 20)
-    BPMInput.insert("1.0", str(bpm))  # add this line to insert default text
-    BPMInput.place(
-    x = 0,
-    y = 130
-    )
+    BPMInput.insert("1.0", str(bpm))
+    KeyInput.insert("1.0", str(key))
 
 # Top level window
 frame = tk.Tk()
 frame.title("MIDI Atributes Changer")
-frame.geometry('350x200')
-
+frame.geometry('350x600')
 # Title
 mainTitle = tk.Label(frame, 
 text = "MIDI Atributes Changer",
@@ -120,6 +102,45 @@ command = import_midi)
 importButton.place(
     x=0,
     y=30
+)
+
+# BPM Input Title
+BPMTitle = tk.Label(frame,
+text = "BPM: ",
+font = ("Arial", 12)
+)
+BPMTitle.place(
+x = 0,
+y = 100
+)
+
+# BPM Input
+BPMInput = tk.Text(frame,
+height = 1,
+width = 20)
+BPMInput.place(
+x = 0,
+y = 130
+)
+
+# Key Input Title
+KeyTitle = tk.Label(frame,
+text = "Key: ",
+font = ("Arial", 12)
+)
+KeyTitle.place(
+x = 0,
+y = 150
+)
+
+# key Input
+KeyInput = tk.Text(frame,
+height = 1,
+width = 20)
+# add this line to insert default text
+KeyInput.place(
+x = 0,
+y = 180
 )
 
 frame.mainloop()
